@@ -96,7 +96,7 @@ class CreatedContexts {
     auto it = insert_result.first;
     if (insert_result.second) {
       // context was not present in the map.  Add it.
-      it->second = std::make_unique<GpuContext>(context, next_id_++);
+      it->second = absl::make_unique<GpuContext>(context, next_id_++);
     }
     return it->second.get();
   }
