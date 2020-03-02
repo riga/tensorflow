@@ -45,6 +45,7 @@ limitations under the License.
 // clang-format off
 #include "third_party/gpus/cudnn/cudnn.h"
 #include "absl/strings/string_view.h"
+#include "absl/memory/memory.h"
 // clang-format on
 
 #pragma clang diagnostic push
