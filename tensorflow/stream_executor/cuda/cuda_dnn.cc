@@ -20,6 +20,7 @@ limitations under the License.
 #include <utility>
 
 #include "absl/strings/str_cat.h"
+#include "absl/memory/memory.h"
 #include "third_party/eigen3/Eigen/Core"
 #include "tensorflow/core/lib/core/errors.h"
 #include "tensorflow/core/util/env_var.h"
@@ -45,7 +46,6 @@ limitations under the License.
 // clang-format off
 #include "third_party/gpus/cudnn/cudnn.h"
 #include "absl/strings/string_view.h"
-#include "absl/memory/memory.h"
 // clang-format on
 
 #pragma clang diagnostic push
