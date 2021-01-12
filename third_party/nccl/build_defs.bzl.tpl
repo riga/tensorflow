@@ -205,6 +205,7 @@ def _prune_relocatable_code_impl(ctx):
                 out.path,
             ],
             command = command,
+            use_default_shell_env = True,
         )
         outputs.append(out)
     return DefaultInfo(files = depset(outputs))
@@ -237,6 +238,7 @@ def _merge_archive_impl(ctx):
         inputs = ctx.files.srcs,  # + ctx.files._crosstool,
         outputs = [ctx.outputs.out],
         command = "echo -e \"%s\" | %s -M" % (mri_script, cc_toolchain.ar_executable),
+        use_default_shell_env = True,
     )
 
 _merge_archive = rule(

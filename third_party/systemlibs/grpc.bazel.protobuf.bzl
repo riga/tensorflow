@@ -139,6 +139,7 @@ def _get_staged_proto_file(context, source_file):
             outputs = [copied_proto],
             command = "cp {} {}".format(source_file.path, copied_proto.path),
             mnemonic = "CopySourceProto",
+            use_default_shell_env = True,
         )
         return copied_proto
 

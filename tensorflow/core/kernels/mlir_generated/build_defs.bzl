@@ -119,6 +119,7 @@ def _gen_kernel_image_hdr_impl_cuda(ctx):
         command = "%s --static --const --type=char --name=%s %s 1> %s" %
                   (bin2c.path, ctx.attr.symbol, fatbin.path, ctx.outputs.out.path),
         mnemonic = "bin2c",
+        use_default_shell_env = True,
     )
 
 def _gen_kernel_image_hdr_impl_rocm(ctx):
@@ -166,6 +167,7 @@ def _gen_kernel_image_hdr_impl_rocm(ctx):
                 ctx.outputs.out.path,
             )
         ),
+        use_default_shell_env = True,
     )
 
 _gen_kernel_image_hdr_rule = rule(
@@ -217,6 +219,7 @@ def _gen_mlir_op_impl(ctx):
                 ctx.outputs.out.path,
             )
         ),
+        use_default_shell_env = True,
     )
 
 _gen_mlir_op_rule = rule(
