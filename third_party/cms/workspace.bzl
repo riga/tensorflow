@@ -114,12 +114,6 @@ def pasta():
         build_file = "//third_party/pasta:BUILD.system",
     )
 
-def keras_applications():
-    cms_new_local_repository(
-        name = "keras_applications_archive",
-        build_file = "//third_party/keras_applications_archive:BUILD.system",
-    )
-
 def wrapt():
     cms_new_local_repository(
         name = "wrapt",
