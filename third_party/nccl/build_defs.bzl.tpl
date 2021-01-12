@@ -205,7 +205,6 @@ def _prune_relocatable_code_impl(ctx):
                 out.path,
             ],
             command = command,
-            use_default_shell_env = True,
         )
         outputs.append(out)
     return DefaultInfo(files = depset(outputs))
