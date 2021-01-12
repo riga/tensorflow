@@ -160,7 +160,6 @@ def repos():
     six()
     termcolor()
     sqlite()
-    swig()
     absl_py()
     pasta()
     wrapt()
