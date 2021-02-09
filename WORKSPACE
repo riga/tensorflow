@@ -115,10 +115,23 @@ http_archive(
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 grpc_deps()
 
-load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
-grpc_extra_deps()
+# disable loading the extra dependencies as grpc_extra_deps() tries to load
+# @com_google_protobuf//:protobuf_deps.bzl which does not exist in our local repository, but instead
+# execute the generated lines manually without the failing one
+# load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+# grpc_extra_deps()
+load("@upb//bazel:workspace_deps.bzl", "upb_deps")
+load("@envoy_api//bazel:repositories.bzl", "api_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@build_bazel_rules_apple//apple:repositories.bzl", "apple_rules_dependencies")
+load("@build_bazel_apple_support//lib:repositories.bzl", "apple_support_dependencies")
+upb_deps()
+api_dependencies()
+go_rules_dependencies()
+go_register_toolchains()
+apple_rules_dependencies()
+apple_support_dependencies()
 
 load("//third_party/googleapis:repository_rules.bzl", "config_googleapis")
 
 config_googleapis()
-
