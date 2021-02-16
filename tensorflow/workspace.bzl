@@ -456,28 +456,6 @@ def tf_repositories(path_prefix = "", tf_repo_name = ""):
         ],
     )
 
-    # WARNING: make sure ncteisen@ and vpai@ are cc-ed on any CL to change the below rule
-    tf_http_archive(
-        name = "com_github_grpc_grpc",
-        sha256 = "b956598d8cbe168b5ee717b5dafa56563eb5201a947856a6688bbeac9cac4e1f",
-        strip_prefix = "grpc-b54a5b338637f92bfcf4b0bc05e0f57a5fd8fadd",
-        system_build_file = clean_dep("//third_party/systemlibs:grpc.BUILD"),
-        patch_file = clean_dep("//third_party/grpc:generate_cc_env_fix.patch"),
-        system_link_files = {
-            "//third_party/systemlibs:BUILD": "bazel/BUILD",
-            "//third_party/systemlibs:grpc.BUILD": "src/compiler/BUILD",
-            "//third_party/systemlibs:grpc.bazel.grpc_deps.bzl": "bazel/grpc_deps.bzl",
-            "//third_party/systemlibs:grpc.bazel.grpc_extra_deps.bzl": "bazel/grpc_extra_deps.bzl",
-            "//third_party/systemlibs:grpc.bazel.cc_grpc_library.bzl": "bazel/cc_grpc_library.bzl",
-            "//third_party/systemlibs:grpc.bazel.generate_cc.bzl": "bazel/generate_cc.bzl",
-            "//third_party/systemlibs:grpc.bazel.protobuf.bzl": "bazel/protobuf.bzl",
-        },
-        urls = [
-            "https://storage.googleapis.com/mirror.tensorflow.org/github.com/grpc/grpc/archive/b54a5b338637f92bfcf4b0bc05e0f57a5fd8fadd.tar.gz",
-            "https://github.com/grpc/grpc/archive/b54a5b338637f92bfcf4b0bc05e0f57a5fd8fadd.tar.gz",
-        ],
-    )
-
     tf_http_archive(
         name = "linenoise",
         build_file = clean_dep("//third_party:linenoise.BUILD"),

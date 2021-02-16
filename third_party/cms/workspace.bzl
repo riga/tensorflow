@@ -45,6 +45,22 @@ def curl():
         create_files = ["COPYING"],
     )
 
+def grpc():
+    cms_new_local_repository(
+        name = "com_github_grpc_grpc",
+        build_file = "//third_party/systemlibs:grpc.BUILD",
+        create_files = ["COPYING"],
+        symlinks = {
+            "//third_party/systemlibs:BUILD": "bazel/BUILD",
+            "//third_party/systemlibs:grpc.BUILD": "src/compiler/BUILD",
+            "//third_party/systemlibs:grpc.bazel.grpc_deps.bzl": "bazel/grpc_deps.bzl",
+            "//third_party/systemlibs:grpc.bazel.grpc_extra_deps.bzl": "bazel/grpc_extra_deps.bzl",
+            "//third_party/systemlibs:grpc.bazel.cc_grpc_library.bzl": "bazel/cc_grpc_library.bzl",
+            "//third_party/systemlibs:grpc.bazel.generate_cc.bzl": "bazel/generate_cc.bzl",
+            "//third_party/systemlibs:grpc.bazel.protobuf.bzl": "bazel/protobuf.bzl",
+        },
+    )
+
 def zlib():
     cms_new_local_repository(
         name = "zlib",
@@ -146,6 +162,7 @@ def repos():
     protobuf()
     pcre()
     curl()
+    grpc()
     zlib()
     cython()
     functools32()
